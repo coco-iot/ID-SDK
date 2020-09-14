@@ -22,7 +22,7 @@ public class ManageIdentifierDemo {
 		IIDManageServiceChannel channel = null;
 		try {
 			//若运行请将示例中的IP和端口替换为OTE环境的IP和端口，联系邮箱：fengyuan@caict.ac.cn
-			channel = chnnlManage.generateChannel("192.168.150.13", 1304, "TCP");
+			channel = chnnlManage.generateChannel("45.120.243.43", 2642, "TCP");
 			if(channel != null){
 				demo_lookupIdentifier(channel);
 				demo_login(channel);
@@ -83,9 +83,9 @@ public class ManageIdentifierDemo {
 
 	private static void demo_deleteIdentifier(IIDManageServiceChannel channel) {
 		// TODO 删除标识
-		if(channel != null){
+		if(channel != null) {
 			// 目标标识
-			String identifier = "88.1000.2/mm";
+			String identifier = "88.888.888/mm";
 			try {
 				BaseResponse deleteResp = channel.deleteIdentifier(identifier, new MsgSettings());
 				if(deleteResp != null && deleteResp.responseCode == 1){
@@ -107,7 +107,7 @@ public class ManageIdentifierDemo {
 		// TODO 移除标识值
 		if(channel != null){
 			// 目标标识
-			String identifier = "88.1000.2/mm";
+			String identifier = "88.888.888/mm";
 			// 目标识下待移除的的标识值索引数组
 			int[] arr = {6,7};
 			try {
@@ -130,7 +130,7 @@ public class ManageIdentifierDemo {
 		// TODO 编辑标识值
 		if(channel != null){
 			// 目标标识
-			String identifier = "88.1000.2/mm";
+			String identifier = "88.888.888/mm";
 			// 目标识下待修改的标识值
 			IdentifierValue[] modifyVals = new IdentifierValue[2];
 			modifyVals[0] = new IdentifierValue(6, "EMAIL", "modify666@sample.com"); 
@@ -154,7 +154,7 @@ public class ManageIdentifierDemo {
 	private static void demo_addIdentifierValues(IIDManageServiceChannel channel) {
 		// TODO 添加标识值
 		if(channel != null){
-			String identifier = "88.1000.2/mm";
+			String identifier = "88.888.888/mm";
 			IdentifierValue[] addVals = new IdentifierValue[2];
 			addVals[0] = new IdentifierValue(6, "URL", "www.666.com"); 
 			addVals[1] = new IdentifierValue(7, "URL", "www.777.com");
@@ -178,7 +178,7 @@ public class ManageIdentifierDemo {
 		// TODO 创建标识
 		if(channel != null){
 			// 待创建标识
-			String identifier = "88.1000.2/mm";
+			String identifier = "88.888.888/mm";
 			// 创建标识时一起添加的标识值
 			IdentifierValue[] values = new IdentifierValue[3];
 			values[0] = new IdentifierValue(1, "URL", "www.aaa.com");
@@ -214,18 +214,19 @@ public class ManageIdentifierDemo {
 		// 若运行请将与我们联系，我们将提供OTE环境及用户信息，联系邮箱：fengyuan@caict.ac.cn
 		if(channel != null){
 			// 用户标识名称
-			String userId = "88.1000.1/fy";
+			String userId = "88.888.888/common_prefixuser";
 			// 用户标识下公钥对应的索引
 			int index = 1;
 			// 私钥文件的路径
-			String privatekeyPath = "D:\\rsa_ori.pem";
+			System.out.println(System.getProperty("user.dir"));
+			String privatekeyPath = System.getProperty("user.dir") + "/ID-SDK-DEMO/src/privateKey.pem";
 			// 若私钥文件无密码则该值设置为null，若私钥文件有密码则将密码赋予password
 			String password = null;
 			// 生成摘要的Hash类型
 			int hashType = 1;
 			try {
 				//BaseResponse loginResp = channel.login(userId,index,privatekeyPath,password,hashType);
-				BaseResponse loginResp = channel.login(userId,index,privatekeyPath,password,hashType,new MsgSettings());
+				BaseResponse loginResp = channel.login(userId, index, privatekeyPath, password, hashType, new MsgSettings());
 				if(loginResp != null && loginResp.responseCode == 1){
 					System.out.println("登录成功！");
 				} else if(loginResp instanceof ErrorResponse){
@@ -244,7 +245,7 @@ public class ManageIdentifierDemo {
 		// TODO 查询标识
 		if( channel != null){
 			// 查询的目标标识
-			String identifier = "88.1000.2/mm";
+			String identifier = "88.888.888/mm";
 			// 查询条件：索引为1和2(该参数可为空)
 			int[] arr = {1,2};
 			// 查询条件：标识值类型为"URL"(该参数可为空)

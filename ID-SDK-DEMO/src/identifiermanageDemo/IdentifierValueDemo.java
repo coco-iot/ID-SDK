@@ -30,7 +30,7 @@ public class IdentifierValueDemo {
 	public static IdentifierValue demo_makeValueOfADMIN() throws IdentifierException {
 		IdentifierValue value = new IdentifierValue();
 		AdminInfo admin = new AdminInfo();
-		admin.admId = Util.encodeString("88.1000.2/cupA");
+		admin.admId = Util.encodeString("88.888.888/cupA");
 		admin.admIdIndex = 300;
 		admin.initPermissions(true, true, true, true, true, true, true, true, true, true, true, true);
 		IdentifierValueUtil.makeIdentifierValueOfAdminInfo(value, admin, 301);
@@ -51,8 +51,8 @@ public class IdentifierValueDemo {
 
 	// tyep:HS_CERT
 	public static IdentifierValue demo_makeValueOfCERT() throws Exception {
-		String CERTIFICATION_PUBKEY_PATH = "D:/sm2key/sm2_public.pem";
-		String CERTIFICATION_PRVKEY_PATH = "D:/sm2key/sm2_private.pem";
+		String CERTIFICATION_PUBKEY_PATH = System.getProperty("user.dir") + "/ID-SDK-DEMO/src/sm2_public.pem";
+		String CERTIFICATION_PRVKEY_PATH = System.getProperty("user.dir") + "/ID-SDK-DEMO/src/sm2_private.pem";
 		PublicKey pubKey = Util.getPublicKeyFromFile(CERTIFICATION_PUBKEY_PATH);
 		PrivateKey prvKey = Util.getPrivateKeyFromFile(CERTIFICATION_PRVKEY_PATH, null);
 
@@ -73,7 +73,7 @@ public class IdentifierValueDemo {
 			throws IdentifierException {
 		IdentifierValue value = new IdentifierValue();
 		int index = 400;
-		String SIGNATURE_PRVKEY_PATH = "D:/rsakeys/rsa_pri.pem";
+		String SIGNATURE_PRVKEY_PATH = System.getProperty("user.dir") + "/ID-SDK-DEMO/src/privateKey.pem";
 		PrivateKey prvKey = Util.getPrivateKeyFromFile(SIGNATURE_PRVKEY_PATH, null);
 		SignatureInfo signInfo = SignatureInfo.newSignatureInstance(prvKey, values, "300:88.996", "88.996.438",
 				"2020-12-12 23:59:59", "2019-11-25 00:00:00", "2019-11-24 15:44:00", "SHA-256");
@@ -85,7 +85,7 @@ public class IdentifierValueDemo {
 	public static IdentifierValue demo_makeValueOfPUBKEY() throws IdentifierException {
 		IdentifierValue value = new IdentifierValue();
 		int index = 300;
-		String PUBLICKEY_PATH = "D:/rsakeys/rsa_pub.pem";
+		String PUBLICKEY_PATH = System.getProperty("user.dir") + "/ID-SDK-DEMO/src/publicKey.pem";
 		IdentifierValueUtil.makeIdentifierValueOfPublicKey(value, PUBLICKEY_PATH, index);
 		return value;
 	}
@@ -95,8 +95,8 @@ public class IdentifierValueDemo {
 		IdentifierValue value = new IdentifierValue();
 		int index = 30;
 		ValueReference[] vr = new ValueReference[2];
-		vr[0] = new ValueReference("88.1000.2/mm", 1);
-		vr[1] = new ValueReference("88.1000.2/cup", 2);
+		vr[0] = new ValueReference("88.888.888/mm", 1);
+		vr[1] = new ValueReference("88.888.888/cup", 2);
 		IdentifierValueUtil.makeIdentifierValueOfVList(value, vr, index);
 		return value;
 	}
