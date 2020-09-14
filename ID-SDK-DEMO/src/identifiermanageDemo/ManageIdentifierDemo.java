@@ -30,8 +30,10 @@ public class ManageIdentifierDemo {
                 if (bLogin) {
                     // TODO 可以进行标识的管理操作
 
+                    System.out.println("create");
                     demo_createIdentifier(channel);
                     // 创建标识后查询
+                    System.out.println("lookup");
                     demo_lookupIdentifier(channel);
                     // 添加各种类型标识值 其中自定义类型可以参照IdentifierValueDemo.java中创建方法
                     demo_addIdentifierValues(channel);
