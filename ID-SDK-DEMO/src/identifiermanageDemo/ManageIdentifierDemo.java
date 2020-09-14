@@ -216,7 +216,7 @@ public class ManageIdentifierDemo {
 			// 用户标识名称
 			String userId = "88.888.888/common_prefixuser";
 			// 用户标识下公钥对应的索引
-			int index = 1;
+			int index = 300;
 			// 私钥文件的路径
 			System.out.println(System.getProperty("user.dir"));
 			String privatekeyPath = System.getProperty("user.dir") + "/ID-SDK-DEMO/src/privateKey.pem";
